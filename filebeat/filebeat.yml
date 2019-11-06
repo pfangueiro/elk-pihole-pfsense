@@ -1,0 +1,24 @@
+# created by n9nes												#
+# feel free to star the rep - https://github.com/nin9s/elk-hole	#
+#################################################################
+
+filebeat:
+ prospectors:
+   -
+     paths:
+        - /var/log/pihole.log
+     
+     # if "input_type" is not working change it to "type"
+     input_type: log
+ registry_file: /var/lib/filebeat/registry
+ 
+output:
+ logstash:
+   # LOGSTASHHOST:5141
+   hosts: ["127.0.0.1:5141"]
+   
+shipper:
+  name: elk-hole
+logging:
+ files:
+   rotateeverybytes: 10485760
